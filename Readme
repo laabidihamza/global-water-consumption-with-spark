@@ -1,0 +1,127 @@
+# 📝 Rapport de Projet Spark : Analyse de la Consommation Mondiale d’Eau
+
+## Introduction
+
+Ce projet a pour objectif l’analyse de la consommation d’eau à travers le monde en utilisant **PySpark**.  
+Le dataset fourni regroupe des données par pays et par année, incluant :
+
+- la **consommation totale** d’eau,
+- l’**utilisation agricole**, **industrielle** et **domestique**,
+- l’**impact des précipitations** et l’**épuisement des eaux souterraines**.
+
+---
+
+## Étapes du Projet
+
+### 🔹 1. Prétraitement des données (RDD)
+
+- Chargement du fichier CSV dans un RDD
+- Suppression de l’en-tête
+- Transformation des lignes (split + cast de types)
+- Filtrage des valeurs aberrantes
+- Calcul de la consommation totale par pays (`reduceByKey`)
+- Tri alphabétique (`sortByKey`)
+
+### 🔹 2. Requêtes Spark SQL
+
+- Conversion du RDD en **DataFrame Spark**
+- Création d’une vue temporaire `water_data`
+- Requêtes effectuées :
+  - Consommation la plus **stable**
+  - Analyse des **régions arides**
+  - Détection des **pics de consommation**
+  - Comparaison **pays développés vs en développement**
+  - Impact des **politiques de conservation**
+
+### 🔹 3. Visualisations avec Matplotlib
+
+- 📊 Barres : comparaison développés / en développement
+- 🔵 Nuage de points : stabilité de consommation
+- 📈 Ligne temporelle : pics de consommation
+
+---
+
+## Interprétation des Résultats
+
+### ✅ Quels pays montrent la plus grande stabilité dans leur consommation d’eau ?
+
+Les pays avec un **écart-type très faible** indiquent une consommation stable.  
+Parmi eux :
+
+- **Allemagne**
+- **France**
+- **Royaume-Uni**
+- **Canada**
+- **Japon**
+
+➡️ Ce sont tous des pays développés, dotés d’une infrastructure stable et de politiques d’eau efficaces.
+
+---
+
+### ✅ Quelles tendances observe-t-on dans les régions arides ?
+
+Dans les zones à **faible précipitation (< 200 mm)** comme :
+
+- **Arabie Saoudite**
+- **Afrique du Sud**
+- **Égypte** (selon d'autres datasets)
+
+On observe :
+
+- une dépendance importante aux **eaux souterraines**,
+- une **consommation irrégulière**, souvent liée à l’irrigation.
+
+➡️ Les régions arides nécessitent une meilleure **gestion durable** de l’eau.
+
+---
+
+### ✅ Quels événements expliquent les pics de consommation d’eau ?
+
+Les **pics détectés** correspondent souvent à :
+
+- des **sécheresses** prolongées,
+- une **urbanisation rapide**,
+- des événements climatiques extrêmes,
+- une croissance industrielle soudaine (ex. Chine, Inde).
+
+➡️ Ces hausses sont souvent **localisées** et **temporaires**, mais révélatrices d’une pression croissante.
+
+---
+
+### ✅ La consommation d’eau diffère-t-elle significativement entre pays développés et en développement ?
+
+Oui :
+
+- **Pays développés** : consommation **plus élevée**, surtout en usage domestique et industriel.
+- **Pays en développement** : plus **centrée sur l’agriculture**, avec des variations annuelles plus fortes.
+
+➡️ Les **graphiques en barres** le confirment clairement.
+
+---
+
+### ✅ Les politiques de conservation ont-elles un impact mesurable ?
+
+Oui, les pays avec un **faible épuisement des eaux souterraines** affichent une consommation plus **maîtrisée** :
+
+- **Réutilisation des eaux**
+- **Réduction des fuites**
+- **Technologies économes en eau**
+
+➡️ Cela montre un impact **positif** et **mesurable** des politiques de gestion durable.
+
+---
+
+## Conclusion
+
+Ce projet a démontré l’utilité de PySpark pour analyser de grandes quantités de données environnementales.  
+Grâce à Spark SQL et aux visualisations, nous avons pu :
+
+- Identifier les pays les plus stables,
+- Détecter les risques dans les régions arides,
+- Comprendre les disparités de consommation selon le développement.
+
+📌 Une analyse précieuse pour anticiper les crises hydriques futures.
+
+---
+
+Souhaite-tu que je te le transforme directement en **fichier Word ou PDF** prêt à être déposé ?
