@@ -228,9 +228,9 @@ Ce tableau identifie les **années où la consommation d'eau d'un pays a dépass
 
 - **Pays développés vs émergents :**
 
-Les pays industrialisés (France, Espagne, Australie) apparaissent dans le classement grâce à des politiques de régulation efficaces.
+Les pays industrialisés **(France, Espagne, Australie)** apparaissent dans le classement grâce à des politiques de régulation efficaces.
 
-Les pays émergents (Inde, Afrique du Sud) maintiennent une stabilité malgré des défis climatiques, probablement via des systèmes d'irrigation optimisés.
+Les pays émergents **(Inde, Afrique du Sud)** maintiennent une stabilité malgré des défis climatiques, probablement via des systèmes d'irrigation optimisés.
 
 - **Coefficient de variation :**
 
@@ -278,12 +278,26 @@ Les **pics détectés** correspondent souvent à :
 
 ### ✅ La consommation d’eau diffère-t-elle significativement entre pays développés et en développement ?
 
-Oui :
+![developed Vs developing](/developed%20vs%20developing.png)
 
-- **Pays développés** : consommation **plus élevée**, surtout en usage domestique et industriel.
-- **Pays en développement** : plus **centrée sur l’agriculture**, avec des variations annuelles plus fortes.
+**Oui** :
 
-➡️ Les **graphiques en barres** le confirment clairement.
+##### 📊 1. Consommation Totale Moyenne (en milliards de m³)
+
+Légère supériorité pour les pays en développement.
+Cela peut s'expliquer par une population plus importante dans certains pays (ex. Chine, Inde), et une dépendance accrue à l’agriculture.
+
+##### 🚰 2. Consommation Moyenne par Habitant (litres/jour)
+Très faible différence entre les deux groupes.
+
+➕ Cela indique un usage quotidien relativement similaire par habitant, malgré les écarts de développement.
+
+##### 🌱 3. Répartition des Usages
+Agriculture domine dans les deux cas (≈ 50%).
+
+Industrie est légèrement plus marquée dans les pays développés.
+
+Usage domestique est légèrement plus élevé dans les pays développés, ce qui reflète un meilleur accès à l’eau potable.
 
 ---
 
