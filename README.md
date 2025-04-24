@@ -24,7 +24,7 @@ Le dataset fourni regroupe des données par **pays** et par **année**, incluant
 
 #### 📊 Interprétation du Graphique : Total Water Consumption by Country
 
-![Total Water Consumption by Country](/Total%20Water%20Consumption%20by%20Country.png)
+![Total Water Consumption by Country](/graphs/Total%20Water%20Consumption%20by%20Country.png)
 
 1. Pays en tête de consommation
 
@@ -53,7 +53,7 @@ L’ensemble des pays représentés ont une consommation d’eau relativement pr
 
 #### 📊 Interprétation du graphique "Average Water Consumption per Year"
 
-![Average Water Consumption per Year](/Average%20Water%20Consumption%20per%20Year.png)
+![Average Water Consumption per Year](/graphs/Average%20Water%20Consumption%20per%20Year.png)
 
 1. Augmentation globale :
 
@@ -70,7 +70,7 @@ Le graphique montre une hausse progressive de la consommation moyenne d'eau au f
 1. Conversion du RDD en **DataFrame Spark**
 2. Création d’une vue temporaire `water_data`
 
-![Water DataFrame](/water_df.png)
+![Water DataFrame](/graphs/water_df.png)
 
 3. Requêtes effectuées :
 - **Consommation la plus stable**
@@ -89,7 +89,7 @@ Le graphique montre une hausse progressive de la consommation moyenne d'eau au f
 - **Détection des pics de consommation**
   - **Explications:**
 
-![pics de consommation](/pics%20de%20consommation.png)
+![pics de consommation](/graphs/pics%20de%20consommation.png)
 
 Ce tableau identifie les **années où la consommation d'eau d'un pays a dépassé de 40% sa moyenne historique** (`TotalConsumption > AvgConsumption * 1.4`), classés par l'écart relatif le plus important (`ConsumptionRatio`).
 
@@ -97,6 +97,119 @@ Ce tableau identifie les **années où la consommation d'eau d'un pays a dépass
 - **ConsumptionRatio** : Rapport entre la consommation de l'année et la moyenne historique du pays.  
   - Ex : Chine (1.52) = consommation 52% supérieure à sa moyenne.  
 - **Seuil** : Un pic est défini comme **+40%** par rapport à la moyenne, indiquant des événements exceptionnels.  
+
+---
+
+- **Comparaison pays développés vs en développement**
+
+1. Consommation totale quasi-identique :
+
+    **Développés** : 497.44 milliards de m³
+    **En développement** : 505.01 milliards de m³
+
+    **→ Écart minime (<2%)**, mais les causes diffèrent radicalement.
+
+2. Répartition sectorielle (en %) :
+        
+|Secteur|Pays développés|Pays en développement|
+|---    |:-:    |:-:    |
+|**Agriculture**|49.97%|50.39%|
+|**Industrie**|27.75%	|27.84%|
+|**Ménages**|24.95%|24.71%|
+- **Agriculture** :
+
+  - Irrigation inefficace (ex. canaux à ciel ouvert).
+
+  - Poids économique du secteur primaire.
+
+- **Industrie** : Part similaire, mais les volumes absolus sont plus élevés dans les pays développés (car leur consommation totale est plus industrialisée).
+
+3. Consommation par habitant :
+
+    **Développés** : 274.55 m³/hab
+    **En développement** : 277.46 m³/hab
+    → Paradoxalement légèrement plus élevée dans les PED, possiblement à cause de :
+
+      - Fuites dans les réseaux urbains (pertes jusqu'à 40% dans certains pays).
+
+      - Subventions encourageant le gaspillage (ex. eau gratuite pour l'agriculture).
+
+- **l'impact des politiques de conservation sur la consommation d'eau**
+
+1. Consommation totale :
+
+    **Pré-2010** : 502.64 milliards de m³
+
+    **Post-2010** : 500.28 milliards de m³
+    **→ Baisse de 0.5%**, modeste mais significative sur une période courte.
+
+**Interprétation** : Les politiques ont freiné la croissance naturelle de la demande (qui aurait dû augmenter avec la population/économie).
+
+---
+
+### 🔹 3. Visualisations avec Matplotlib
+
+- 📊 Barres : comparaison développés / en développement
+- 🔵 barres : stabilité de consommation
+- 📈 Ligne temporelle : pics de consommation
+
+---
+
+## Interprétation des Résultats
+
+### ✅ Quels pays montrent la plus grande stabilité dans leur consommation d’eau ?
+
+![Pays avec consommation d'eau la plus stable](/graphs/Pays%20avec%20consommation%20d'eau%20la%20plus%20stable.png)
+
+- **Top 3 des pays stables :**
+#####
+  **Argentine** (CV le plus bas) : Gestion centralisée des bassins fluviaux (ex. Paraná).
+
+  **Arabie Saoudite** : Malgré son aridité, stabilité due aux usines de désalinisation et quotas stricts.
+
+  **Mexique** : Infrastructures de stockage (barrages) et diversification des sources.
+
+- **Pays développés vs émergents :**
+
+Les pays industrialisés **(France, Espagne, Australie)** apparaissent dans le classement grâce à des politiques de régulation efficaces.
+
+Les pays émergents **(Inde, Afrique du Sud)** maintiennent une stabilité malgré des défis climatiques, probablement via des systèmes d'irrigation optimisés.
+
+- **Coefficient de variation :**
+
+**Tous < 17 (faible variabilité)**, mais des écarts notables :
+
+**Argentine (10.3) vs Australie (17.0)** → L'Australie, bien que stable, subit plus d'aléas climatiques.
+
+**Implications :**
+La stabilité ne dépend pas que des ressources naturelles, mais aussi de stratégies de gestion (ex. diversification des sources, technologies).
+
+Les pays arides (Arabie Saoudite) prouvent que la stabilité est possible même en contexte de stress hydrique.
+
+---
+
+### ✅ Quelles tendances observe-t-on dans les régions arides ?
+
+![ Tendances des régions arides](/graphs/Tendances%20des%20régions%20arides.png)
+
+1. **Hausse globale :**
+La consommation passe d'environ **460** milliards de m³ (**2000**) à **540** milliards de m³ (**2025**) **(+17,4%)**, malgré la rareté de l'eau dans ces régions.
+    - **Cause majeure**: Croissance démographique et expansion agricole (ex. irrigation des cultures en zones désertiques).
+
+2. **Pics et fluctuations :**
+
+- **2010-2015** : Augmentation rapide, possiblement liée à :
+  - Sécheresses accrues (nécessitant plus d'irrigation).
+  - Développement d'industries gourmandes en eau (ex. extraction pétrolière en Arabie Saoudite).
+
+- **2020-2025** : Pente qui s'adoucit, suggérant l'impact des politiques de conservation (ex. quotas, dessalement).
+
+---
+
+### ✅ Quels événements expliquent les pics de consommation d’eau ?
+
+![](/graphs/pic%20de%20consommation%20par%20pays%20et%20par%20annee.png)
+
 
 ##### **Pays et années critiques** :
 
@@ -157,128 +270,9 @@ Ce tableau identifie les **années où la consommation d'eau d'un pays a dépass
 
 ---
 
-- **Comparaison pays développés vs en développement**
-
-1. Consommation totale quasi-identique :
-
-    **Développés** : 497.44 milliards de m³
-    **En développement** : 505.01 milliards de m³
-
-    **→ Écart minime (<2%)**, mais les causes diffèrent radicalement.
-
-2. Répartition sectorielle (en %) :
-        
-|Secteur|Pays développés|Pays en développement|
-|---    |:-:    |:-:    |
-|**Agriculture**|49.97%|50.39%|
-|**Industrie**|27.75%	|27.84%|
-|**Ménages**|24.95%|24.71%|
-- **Agriculture** :
-
-  - Irrigation inefficace (ex. canaux à ciel ouvert).
-
-  - Poids économique du secteur primaire.
-
-- **Industrie** : Part similaire, mais les volumes absolus sont plus élevés dans les pays développés (car leur consommation totale est plus industrialisée).
-
-3. Consommation par habitant :
-
-    **Développés** : 274.55 m³/hab
-    **En développement** : 277.46 m³/hab
-    → Paradoxalement légèrement plus élevée dans les PED, possiblement à cause de :
-
-      - Fuites dans les réseaux urbains (pertes jusqu'à 40% dans certains pays).
-
-      - Subventions encourageant le gaspillage (ex. eau gratuite pour l'agriculture).
-
-- **l'impact des politiques de conservation sur la consommation d'eau**
-
-1. Consommation totale :
-
-    **Pré-2010** : 502.64 milliards de m³
-
-    **Post-2010** : 500.28 milliards de m³
-    **→ Baisse de 0.5%**, modeste mais significative sur une période courte.
-
-**Interprétation** : Les politiques ont freiné la croissance naturelle de la demande (qui aurait dû augmenter avec la population/économie).
-
----
-
-### 🔹 3. Visualisations avec Matplotlib
-
-- 📊 Barres : comparaison développés / en développement
-- 🔵 Nuage de points : stabilité de consommation
-- 📈 Ligne temporelle : pics de consommation
-
----
-
-## Interprétation des Résultats
-
-### ✅ Quels pays montrent la plus grande stabilité dans leur consommation d’eau ?
-
-![Pays avec consommation d'eau la plus stable](/Pays%20avec%20consommation%20d'eau%20la%20plus%20stable.png)
-
-- **Top 3 des pays stables :**
-#####
-  **Argentine** (CV le plus bas) : Gestion centralisée des bassins fluviaux (ex. Paraná).
-
-  **Arabie Saoudite** : Malgré son aridité, stabilité due aux usines de désalinisation et quotas stricts.
-
-  **Mexique** : Infrastructures de stockage (barrages) et diversification des sources.
-
-- **Pays développés vs émergents :**
-
-Les pays industrialisés **(France, Espagne, Australie)** apparaissent dans le classement grâce à des politiques de régulation efficaces.
-
-Les pays émergents **(Inde, Afrique du Sud)** maintiennent une stabilité malgré des défis climatiques, probablement via des systèmes d'irrigation optimisés.
-
-- **Coefficient de variation :**
-
-**Tous < 17 (faible variabilité)**, mais des écarts notables :
-
-**Argentine (10.3) vs Australie (17.0)** → L'Australie, bien que stable, subit plus d'aléas climatiques.
-
-**Implications :**
-La stabilité ne dépend pas que des ressources naturelles, mais aussi de stratégies de gestion (ex. diversification des sources, technologies).
-
-Les pays arides (Arabie Saoudite) prouvent que la stabilité est possible même en contexte de stress hydrique.
-
----
-
-### ✅ Quelles tendances observe-t-on dans les régions arides ?
-
-![ Tendances des régions arides](/Tendances%20des%20régions%20arides.png)
-
-1. **Hausse globale :**
-La consommation passe d'environ **460** milliards de m³ (**2000**) à **540** milliards de m³ (**2025**) **(+17,4%)**, malgré la rareté de l'eau dans ces régions.
-    - **Cause majeure**: Croissance démographique et expansion agricole (ex. irrigation des cultures en zones désertiques).
-
-2. **Pics et fluctuations :**
-
-- **2010-2015** : Augmentation rapide, possiblement liée à :
-  - Sécheresses accrues (nécessitant plus d'irrigation).
-  - Développement d'industries gourmandes en eau (ex. extraction pétrolière en Arabie Saoudite).
-
-- **2020-2025** : Pente qui s'adoucit, suggérant l'impact des politiques de conservation (ex. quotas, dessalement).
-
----
-
-### ✅ Quels événements expliquent les pics de consommation d’eau ?
-
-Les **pics détectés** correspondent souvent à :
-
-- des **sécheresses** prolongées,
-- une **urbanisation rapide**,
-- des événements climatiques extrêmes,
-- une croissance industrielle soudaine (ex. Chine, Inde).
-
-➡️ Ces hausses sont souvent **localisées** et **temporaires**, mais révélatrices d’une pression croissante.
-
----
-
 ### ✅ La consommation d’eau diffère-t-elle significativement entre pays développés et en développement ?
 
-![developed Vs developing](/developed%20vs%20developing.png)
+![developed Vs developing](/graphs/developed%20vs%20developing.png)
 
 **Oui** :
 
@@ -297,13 +291,20 @@ Agriculture domine dans les deux cas (≈ 50%).
 
 Industrie est légèrement plus marquée dans les pays développés.
 
-Usage domestique est légèrement plus élevé dans les pays développés, ce qui reflète un meilleur accès à l’eau potable.
+Usage **domestique** est légèrement **plus élevé** dans les **pays développés**, ce qui reflète un meilleur accès à l’eau potable.
 
 ---
 
 ### ✅ Les politiques de conservation ont-elles un impact mesurable ?
 
+![](/graphs/conservation%20d%20eau.png)
+
 Oui, les pays avec un **faible épuisement des eaux souterraines** affichent une consommation plus **maîtrisée** :
+
+1. Consommation totale :
+**Pré-2006** : 501.97 milliards de m³
+**Post-2006** : 498.85 milliards de m³
+**→ Baisse de 0.4%**, modeste mais significative sur une période courte.
 
 - **Réutilisation des eaux**
 - **Réduction des fuites**
@@ -321,9 +322,3 @@ Grâce à Spark SQL et aux visualisations, nous avons pu :
 - Identifier les pays les plus stables,
 - Détecter les risques dans les régions arides,
 - Comprendre les disparités de consommation selon le développement.
-
-📌 Une analyse précieuse pour anticiper les crises hydriques futures.
-
----
-
-Souhaite-tu que je te le transforme directement en **fichier Word ou PDF** prêt à être déposé ?
