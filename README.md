@@ -1,4 +1,4 @@
-# 📝 Rapport de Projet Spark : Analyse de la Consommation Mondiale d’Eau
+# Rapport de Projet Spark : Analyse de la Consommation Mondiale d’Eau
 
 ## Introduction
 
